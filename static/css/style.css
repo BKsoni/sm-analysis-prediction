@@ -1,197 +1,180 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Assistant', sans-serif;
-    font-family: 'Geologica', sans-serif;
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Ubuntu', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Assistant", sans-serif;
+  font-family: "Geologica", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .nav .items {
-    display: flex;
-    list-style-type: none;
-    justify-content: space-around;
-    align-items: center;
-    /* background-color: aqua; */
-    /* border-bottom: solid  2px; */
-    box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.8);
-    padding: 15px;
+  width: 100%;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.8);
+  padding: 15px;
 }
 
 .nav .items p {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .nav .items p i {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .nav .items li a {
-    /* justify-content: center; */
-    /* align-items: center; */
-    text-decoration: none;
-    color: black;
-    transition: 0.5s ease-out;
-    border-radius: 3px;
-    padding: 10px;
+  /* justify-content: center; */
+  /* align-items: center; */
+  text-decoration: none;
+  color: black;
+  transition: 0.5s ease-out;
+  border-radius: 3px;
+  padding: 10px;
 }
 
 .nav .items li a:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
-#stock{
-    color: red;
+#stock {
+  color: red;
 }
-#market{
-    color: green;
+#market {
+  color: green;
 }
-#login,#register{
-    color: blue;
+#login,
+#register {
+  color: blue;
 }
-.main .main1{
-    /* background-color: green; */
-    text-align: center;
-    padding: 20px;
-    height: 91vh;
-}
-
-#head{
-    margin-bottom: 50px;
+.main .main1 {
+  /* background-color: green; */
+  text-align: center;
+  padding: 20px;
+  height: 91vh;
 }
 
-.main .main1 .news{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+#head {
+  margin-bottom: 50px;
 }
-.main .main1 .left{
-    height: 80px;
-    width: 40%;
-    border: 3px solid yellow;
-    border-radius: 15px;
-    padding: 5px;
+
+.main .main1 .news {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 30px;
 }
-.main .main1 .right{
-    height: 80px;
-    width: 40%;
-    border: 3px solid yellow;
-    border-radius: 15px;
-    padding: 5px;
+.main .main1 .left {
+  height: 80px;
+  width: 40%;
+  border: 3px solid yellow;
+  border-radius: 15px;
+  padding: 5px;
 }
+.main .main1 .right {
+  height: 80px;
+  width: 40%;
+  border: 3px solid yellow;
+  border-radius: 15px;
+  padding: 5px;
+}
+
 .slideshow-container {
-    display: flex;
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
-.mySlides img{
-    height: 390px;
-    width: 97vw;
+.mySlides {
+  background-image: url(../images/main.jpg);
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-size: cover;
+  width: 95vw;
+  height: 390px;
+  /* width: 97vw; */
 }
 
 /* Making of Four Boxes */
-.boxes{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    margin-top: 50px;
-    margin-bottom: 50px;
+.boxes {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 100px;
 }
-.boxes .box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    width: 12%;
-    height: 150px;
-}
-.twoBoxes{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 70px;
+.boxes .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  width: 18vw;
+  height: 35vh;
 }
 
-.twoBoxes .left{
-    border: solid black 1px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    width: 45%;
-}
-.twoBoxes .left .headingContent{
-    display: flex;
-    align-items: center;
-    background-color: yellow;
-    justify-content: center;
-}
-i{
-    font-size: 25px;
-}
-.table{
-    margin-top: 12px;
-}
-.table tr th,td{
-    padding: 10px;
-    text-align: center;
+.twoBoxes {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 70px;
 }
 
-.twoImages{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    background-color: cadetblue;
+.twoBoxes .left {
+  border: solid black 1px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  width: 45%;
+}
+.twoBoxes .left .headingContent {
+  display: flex;
+  align-items: center;
+  background-color: yellow;
+  justify-content: center;
+}
+i {
+  font-size: 25px;
+}
+.table {
+  margin-top: 12px;
+}
+.table tr th,
+td {
+  padding: 10px;
+  text-align: center;
 }
 
-.twoImages .image{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: rgba(0,0,0,0.2) solid 1px;
-    padding: 5px;
-    width: 100%;
-    padding-top: 40px;
+.twoImages {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background-color: cadetblue;
 }
 
-
-h1{
-    margin-top: 30px;
-}
-
-.twoImages .image #button{
-    margin: 40px;
-    padding: 10px;
-    font-size: 20px;
-    color: black;
-    border: lightgreen solid 1px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: 0.5s ease-in-out;
-}
-input:hover{
-    background-color: green;
+h1 {
+  margin-top: 30px;
 }
 
 .search-container {
-    position: relative;
-    width: 300px;
-    margin: 20px auto;
+  position: relative;
+  width: 300px;
+  margin: 20px auto;
 }
 
 #autocomplete-results {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    border: 1px solid #ccc;
-    max-height: 150px;
-    overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
 }
