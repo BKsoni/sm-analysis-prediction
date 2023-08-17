@@ -1,0 +1,263 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+Stock Analysis and Prediction
+{% endblock %}
+{% block css %}
+<style>
+</style>
+{% endblock %}
+{% block body %}
+    <div class="main">
+        <div class="main1">
+            <h1 id="head">Stock In News</h1>
+            <div class="news">
+                <div class="left">
+                    <marquee behavior="" direction="">SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+                    </marquee>
+                    <marquee behavior="" direction="">SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+                    </marquee>
+                </div>
+                <div class="right">
+                    <marquee behavior="" direction="">SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+                    </marquee>
+                    <marquee behavior="" direction="">SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+                    </marquee>
+                </div>
+            </div>
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <img src="{% static 'images/bull.avif' %}" loading="lazy">
+                </div>
+            </div>
+        </div>
+        <div class="boxes">
+            <div class="box">
+                <h2>NIFTY 50</h2>
+                <h2 id="prize1">17799.8</h2>
+                <p>175.4</p>
+                <p>1.0%</p>
+            </div>
+            <div class="box">
+                <h2>NIFTY BANK</h2>
+                <h2 id="prize2">17799.8</h2>
+                <p>175.4</p>
+                <p>1.0%</p>
+            </div>
+            <div class="box">
+                <h2>NIFTY 50</h2>
+                <h2 id="prize3">17799.8</h2>
+                <p>175.4</p>
+                <p>1.0%</p>
+            </div>
+            <div class="box">
+                <h2>NIFTY 50</h2>
+                <h2 id="prize4">17799.8</h2>
+                <p>175.4</p>
+                <p>1.0%</p>
+            </div>
+        </div>
+        <div class="twoBoxes">
+            <div class="left">
+                <div class="headingContent">
+                    <i class="fa-solid fa-circle-up"></i>
+                    <h2>Top Gainers</h2>
+                </div>
+                <br>
+                <hr>
+                <table class="table" border="1" style="border-collapse: collapse;">
+                    <tr>
+                        <th>Company Name</th>
+                        <th>₹Last Prize</th>
+                        <th>₹Change</th>
+                        <th>%Change</th>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="left">
+                <div class="headingContent">
+                    <i class="fa-solid fa-circle-down"></i>
+                    <h2>Top Gainers</h2>
+                </div>
+                <br>
+                <hr>
+                <table class="table" border="1" style="border-collapse: collapse;">
+                    <tr>
+                        <th>Company Name</th>
+                        <th>₹Last Prize</th>
+                        <th>₹Change</th>
+                        <th>%Change</th>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="twoImages">
+            <div class="image">
+                <img src="{% static 'images/tips.png' %}" alt=""  style="height: 300px; width: 700px;">
+                <h1>Learn About Stock</h1>
+                <input type="button" value="Learn" id="button">
+            </div>
+            <div class="image">
+                <img src="{% static 'images/portfolio.png' %}" alt="" style="height: 300px; width: 700px;">
+                <h1>Add Stock</h1>
+                <p> <em>Click below to make your Watchlist</em> </p>
+                <input type="button" value="Add Stock" id="button">
+            </div>
+        </div>
+
+{% endblock %}
+{% block js %}
+<script>
+    // $(document).ready(function(){
+    //     $(window).scroll(lazyload);
+    //         lazyload();
+    // });
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+}
+</script>
+{% endblock %}
