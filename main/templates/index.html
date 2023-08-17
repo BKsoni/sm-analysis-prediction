@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'basic.html' %}
 {% load static %}
 {% block title %}
@@ -72,72 +73,20 @@ Stock Analysis and Prediction
                         <th>₹Change</th>
                         <th>%Change</th>
                     </tr>
+                    {% for gainer in top_gainers %}
                     <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
+                        <td>{{ gainer.ticker }}</td>
+                        <td>${{ gainer.price }}</td>
+                        <td>${{ gainer.change_amount }}</td>
+                        <td>%{{ gainer.change_percentage }}</td>
                     </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
+                    {% endfor %}
                 </table>
             </div>
             <div class="left">
                 <div class="headingContent">
                     <i class="fa-solid fa-circle-down"></i>
-                    <h2>Top Gainers</h2>
+                    <h2>Top Losers</h2>
                 </div>
                 <br>
                 <hr>
@@ -148,66 +97,14 @@ Stock Analysis and Prediction
                         <th>₹Change</th>
                         <th>%Change</th>
                     </tr>
+                    {% for gainer in top_losers %}
                     <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
+                        <td>{{ gainer.ticker }}</td>
+                        <td>${{ gainer.price }}</td>
+                        <td>${{ gainer.change_amount }}</td>
+                        <td>{{ gainer.change_percentage }}</td>
                     </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
-                    <tr>
-                        <td>Company Name</td>
-                        <td>₹Last Prize</td>
-                        <td>₹Change</td>
-                        <td>%Change</td>
-                    </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>
@@ -224,6 +121,223 @@ Stock Analysis and Prediction
                 <input type="button" value="Add Stock" id="button">
             </div>
         </div>
+=======
+{% extends 'basic.html' %} {% load static %} {% block title %} Stock Analysis
+and Prediction {% endblock %} {% block css %}
+<style></style>
+{% endblock %} {% block body %}
+<div class="main">
+  <div class="main1">
+    <h1 id="head">Stock In News</h1>
+    <div class="news">
+      <div class="left">
+        <marquee behavior="" direction=""
+          >SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+        </marquee>
+        <marquee behavior="" direction=""
+          >SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+        </marquee>
+      </div>
+      <div class="right">
+        <marquee behavior="" direction=""
+          >SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+        </marquee>
+        <marquee behavior="" direction=""
+          >SHREECEM | Price: 24300.0₹ | Change: +1118.95₹ | %Change: +4.83%
+        </marquee>
+      </div>
+    </div>
+    <div class="slideshow-container">
+      <div class="mySlides">
+        <!-- <img
+          src="{% static 'images/main.png' %}"
+          alt=""
+          style="height: 300px; width: 700px"
+        /> -->
+      </div>
+    </div>
+  </div>
+  <div class="boxes">
+    <div class="box">
+      <h2>NIFTY 50</h2>
+      <h2 id="prize1">17799.8</h2>
+      <p>175.4</p>
+      <p>1.0%</p>
+    </div>
+    <div class="box">
+      <h2>NIFTY BANK</h2>
+      <h2 id="prize2">17799.8</h2>
+      <p>175.4</p>
+      <p>1.0%</p>
+    </div>
+    <div class="box">
+      <h2>NIFTY 50</h2>
+      <h2 id="prize3">17799.8</h2>
+      <p>175.4</p>
+      <p>1.0%</p>
+    </div>
+    <div class="box">
+      <h2>NIFTY 50</h2>
+      <h2 id="prize4">17799.8</h2>
+      <p>175.4</p>
+      <p>1.0%</p>
+    </div>
+  </div>
+  <div class="twoBoxes">
+    <div class="left">
+      <div class="headingContent">
+        <i class="fa-solid fa-circle-up"></i>
+        <h2>Top Gainers</h2>
+      </div>
+      <br />
+      <hr />
+      <table class="table" border="1" style="border-collapse: collapse">
+        <tr>
+          <th>Company Name</th>
+          <th>₹Last Prize</th>
+          <th>₹Change</th>
+          <th>%Change</th>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+      </table>
+    </div>
+    <div class="left">
+      <div class="headingContent">
+        <i class="fa-solid fa-circle-down"></i>
+        <h2>Top Gainers</h2>
+      </div>
+      <br />
+      <hr />
+      <table class="table" border="1" style="border-collapse: collapse">
+        <tr>
+          <th>Company Name</th>
+          <th>₹Last Prize</th>
+          <th>₹Change</th>
+          <th>%Change</th>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>₹Last Prize</td>
+          <td>₹Change</td>
+          <td>%Change</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+>>>>>>> b518fca4ef01ba8ed1a9563d388a6fefa150dfd6
 
   {% endblock %} {% block js %}
   <script>
