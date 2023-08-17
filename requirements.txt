@@ -2,3 +2,4 @@ django
 yfinance
 plotly
 yahoo_fin
+python-decouple
