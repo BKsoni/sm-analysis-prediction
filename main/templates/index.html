@@ -72,20 +72,72 @@ Stock Analysis and Prediction
                         <th>₹Change</th>
                         <th>%Change</th>
                     </tr>
-                    {% for gainer in top_gainers %}
                     <tr>
-                        <td>{{ gainer.ticker }}</td>
-                        <td>${{ gainer.price }}</td>
-                        <td>${{ gainer.change_amount }}</td>
-                        <td>%{{ gainer.change_percentage }}</td>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
                     </tr>
-                    {% endfor %}
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
                 </table>
             </div>
             <div class="left">
                 <div class="headingContent">
                     <i class="fa-solid fa-circle-down"></i>
-                    <h2>Top Losers</h2>
+                    <h2>Top Gainers</h2>
                 </div>
                 <br>
                 <hr>
@@ -96,14 +148,66 @@ Stock Analysis and Prediction
                         <th>₹Change</th>
                         <th>%Change</th>
                     </tr>
-                    {% for gainer in top_losers %}
                     <tr>
-                        <td>{{ gainer.ticker }}</td>
-                        <td>${{ gainer.price }}</td>
-                        <td>${{ gainer.change_amount }}</td>
-                        <td>{{ gainer.change_percentage }}</td>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
                     </tr>
-                    {% endfor %}
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>₹Last Prize</td>
+                        <td>₹Change</td>
+                        <td>%Change</td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -121,39 +225,43 @@ Stock Analysis and Prediction
             </div>
         </div>
 
-{% endblock %}
-{% block js %}
-<script>
+  {% endblock %} {% block js %}
+  <script>
     // $(document).ready(function(){
     //     $(window).scroll(lazyload);
     //         lazyload();
     // });
 
-let slideIndex = 1;
-showSlides(slideIndex);
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
+    function plusSlides(n) {
+      showSlides((slideIndex += n));
+    }
 
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
+    function currentSlide(n) {
+      showSlides((slideIndex = n));
+    }
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
+      }
+      for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
     }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-}
-</script>
-{% endblock %}
+  </script>
+  {% endblock %}
+</div>
