@@ -68,16 +68,16 @@ Stock Analysis and Prediction
                 <table class="table" border="1" style="border-collapse: collapse;">
                     <tr>
                         <th>Company Name</th>
-                        <th>₹Last Prize</th>
-                        <th>₹Change</th>
+                        <th>$Last Prize</th>
+                        <th>$Change</th>
                         <th>%Change</th>
                     </tr>
                     {% for gainer in top_gainers %}
                     <tr>
                         <td>{{ gainer.ticker }}</td>
-                        <td>${{ gainer.price }}</td>
-                        <td>${{ gainer.change_amount }}</td>
-                        <td>%{{ gainer.change_percentage }}</td>
+                        <td>{{ gainer.price }}$</td>
+                        <td>{{ gainer.change_amount }}$</td>
+                        <td>{{ gainer.change_percentage }}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -92,15 +92,15 @@ Stock Analysis and Prediction
                 <table class="table" border="1" style="border-collapse: collapse;">
                     <tr>
                         <th>Company Name</th>
-                        <th>₹Last Prize</th>
-                        <th>₹Change</th>
+                        <th>$Last Prize</th>
+                        <th>$Change</th>
                         <th>%Change</th>
                     </tr>
                     {% for gainer in top_losers %}
                     <tr>
                         <td>{{ gainer.ticker }}</td>
-                        <td>${{ gainer.price }}</td>
-                        <td>${{ gainer.change_amount }}</td>
+                        <td>{{ gainer.price }}$</td>
+                        <td>{{ gainer.change_amount }}$</td>
                         <td>{{ gainer.change_percentage }}</td>
                     </tr>
                     {% endfor %}
@@ -111,13 +111,13 @@ Stock Analysis and Prediction
             <div class="image">
                 <img src="{% static 'images/tips.png' %}" alt=""  style="height: 300px; width: 700px;">
                 <h1>Learn About Stock</h1>
-                <input type="button" value="Learn" id="button">
+                <input type="button" value="Learn" id="button" class="btn btn-dark">
             </div>
             <div class="image">
                 <img src="{% static 'images/portfolio.png' %}" alt="" style="height: 300px; width: 700px;">
                 <h1>Add Stock</h1>
                 <p> <em>Click below to make your Watchlist</em> </p>
-                <input type="button" value="Add Stock" id="button">
+                <input type="button" value="Add Stock" id="button" class="btn btn-dark">
             </div>
         </div>
 

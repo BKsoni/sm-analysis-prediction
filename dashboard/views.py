@@ -3,6 +3,10 @@ import yfinance as yf
 import plotly.graph_objs as go
 from django.shortcuts import render
 from django.contrib import messages
+from decouple import config
+import requests
+
+API_KEY = config("ALPHA_VANTAGE_API_KEY")
 
 def fetch_stock_data(symbol, duration):
     try:
@@ -92,3 +96,11 @@ def stock_info(request):
     chart = go.Figure(data=chart_data, layout=layout)
 
     return render(request, 'stock_info.html', {'chart': chart.to_html()})
+
+def get_news(request):
+    url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey={API_KEY}'
+    r = requests.get(url)
+    data = r.json()
+    news = data['feed']
+    print(news[0])
+    return render(request, 'news.html', {'title': 'News','news_list': news})

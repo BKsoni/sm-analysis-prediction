@@ -6,10 +6,9 @@ import requests
 
 API_KEY = config("ALPHA_VANTAGE_API_KEY")
 
-
 # Create your views here.
 def index(request):
-    url = 'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=XWN6DUC5D5WU2L9Q'
+    url = f'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey={API_KEY}'
     r = requests.get(url)
     data = r.json()
     top_gainers = [ data['top_gainers'][i] for i in range(10) ]

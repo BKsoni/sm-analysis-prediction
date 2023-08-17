@@ -107,6 +107,7 @@
   margin-top: 100px;
 }
 .boxes .box {
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,7 +115,7 @@
   background-color: black;
   color: white;
   width: 18vw;
-  height: 35vh;
+  height: 40vh;
 }
 
 .twoBoxes {
@@ -177,4 +178,74 @@ h1 {
   border: 1px solid #ccc;
   max-height: 150px;
   overflow-y: auto;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+}
+
+.card-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-date,
+.card-authors {
+  color: #888;
+  margin-top: 5px;
+}
+
+.card-summary {
+  margin-top: 10px;
+  color: #555;
+}
+
+.card-topics h3,
+.card-sentiment h3,
+.card-ticker-sentiment h3 {
+  margin-top: 15px;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.card-link {
+  margin-top: 15px;
+}
+
+.card-link a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.card-link a:hover {
+  text-decoration: underline;
 }
