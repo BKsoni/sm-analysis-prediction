@@ -1,0 +1,44 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+RELIANCE.NS Prediction
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div>
+    <div class="card-container">
+        <!-- Card 1 -->
+
+        <a href="{% url 'news_sentiment' %}" class="card">
+            <img src="{% static 'images/news.avif' %}" alt="News" class="card-image">
+            <div class="card-content">
+                <h2 class="card-title">News Sentiment</h2>
+                <p class="card-summary">Using NLP</p>
+            </div>
+        </a>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="{% static 'images/stock_lstm.jpg' %}" alt="Stock Market" class="card-image">
+            <div class="card-content">
+                <h2 class="card-title">Next 30 days Prediction using LSTM model</h2>
+                <p class="card-summary">Using LSTM, Yfinance</p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="{% static 'images/stock_lstm.jpg' %}" alt="Stock Market" class="card-image">
+            <div class="card-content">
+                <h2 class="card-title">Next 30 days Prediction using XGBoost model</h2>
+                <p class="card-summary">Using XGBoost, Yfinance</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+{% endblock %}

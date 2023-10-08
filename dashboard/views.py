@@ -5,15 +5,17 @@ from django.shortcuts import render
 from django.contrib import messages
 from decouple import config
 import requests
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 API_KEY = config("ALPHA_VANTAGE_API_KEY")
 
-def fetch_stock_data(symbol, duration):
+def fetch_stock_data(symbol,duration):
     try:
-        if duration=="1d":
-            stock_data = yf.download(symbol, interval='1m', period=duration)  # 1d data
+        if duration=="live":
+            stock_data = yf.download(symbol, period="1d", interval="1m")  # Fetch data by period
         else:
-            stock_data = yf.download(symbol, period=duration)  # Fetch data by period
+            stock_data = yf.download(symbol)
     except Exception as e:
         print("stock_data error")
 
@@ -28,16 +30,18 @@ def fetch_stock_data(symbol, duration):
 
     return stock_data
 
+@login_required(login_url='/login/')
 def stock_info(request):
+
     search_text = request.GET.get('ticker', '')
 
     if not search_text:
         messages.info(request, 'Please enter a stock ticker.')
         return render(request, 'stock_info.html')
     symbol = search_text.upper()
-    duration = '1d'
+    duration = request.GET.get('duration', 'live')  # Default to 'live'
 
-    stock_data = fetch_stock_data(symbol, duration)
+    stock_data = fetch_stock_data(symbol,duration)
     if stock_data.empty:
         messages.error(request, f'Error fetching data for {symbol}. Please try again.')
         return render(request, 'stock_info.html')
@@ -71,36 +75,58 @@ def stock_info(request):
     chart_data = [candlestick_trace, line_chart, scatter_MA5, scatter_MA20, scatter_Exponential_MA5, scatter_Exponential_MA8,scatter_Exponential_MA13, super_trend]
 
     layout = go.Layout(
-        title=f'{symbol} Stock Chart',
-        xaxis=dict(title='Date'),
-        yaxis=dict(title='Closing Price'),
-        autosize=True,
-        width=1500,
-        height=800,
-        updatemenus=[
-            {
-                'buttons': [
-                    {'args': [{'visible': [True, False, True, True, True, True, True]}, {'title': f'{symbol} Stock Chart'}],
-                     'label': 'Candlestick',
-                     'method': 'update'},
-                    {'args': [{'visible': [False, True, True, True, True, True, True]}, {'title': f'{symbol} Stock Chart'}],
-                     'label': 'LineChart',
-                     'method': 'update'},
-                ],
-                'direction': 'down',
-                'showactive': False,
-            }
-        ],
+    title=f'{symbol} Stock Chart',
+    xaxis=dict(title='Date'),
+    yaxis=dict(title='Closing Price'),
+    autosize=True,
+    width=1500,
+    height=800,
+    updatemenus=[
+        {
+            'buttons': [
+
+                {'args': [{'visible': [True, False, True, True, True, True, True]}, {'title': f'{symbol} Stock Chart'}],
+                 'label': 'Candlestick',
+                 'method': 'update'},
+                {'args': [{'visible': [False, True, True, True, True, True, True]}, {'title': f'{symbol} Stock Chart'}],
+                 'label': 'LineChart',
+                 'method': 'update'},
+            ],
+            'direction': 'down',
+            'showactive': False,
+        }
+    ],
     )
 
-    chart = go.Figure(data=chart_data, layout=layout)
 
+    chart = go.Figure(data=chart_data, layout=layout)
+    if duration=="past":
+        chart.update_xaxes(rangeslider_visible=True,
+                        rangeselector=dict(
+                                buttons=list([
+                                    #dict(count=10, label="1d", step="day", stepmode="backward",),
+                                    dict(count=5, label="5d", step="day", stepmode="backward"),
+                                    dict(count=1, label="1m", step="month", stepmode="backward"),
+                                    dict(count=3, label="3m", step="month", stepmode="backward"),
+                                    #dict(count=6, label="6m", step="month", stepmode="backward"),
+                                    dict(count=1, label="1y", step="year", stepmode="backward"),
+                                    #dict(count=2, label="2y", step="year", stepmode="backward"),
+                                    dict(count=5, label="5y", step="year", stepmode="backward"),
+                                    dict(step="all")
+                                ])
+
+                        ))
     return render(request, 'stock_info.html', {'chart': chart.to_html()})
 
+@login_required(login_url='/login/')
 def get_news(request):
     url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey={API_KEY}'
     r = requests.get(url)
     data = r.json()
-    news = data['feed']
-    print(news[0])
-    return render(request, 'news.html', {'title': 'News','news_list': news})
+    page_obj = None
+    if data.get('feed',0):
+        news = data['feed']
+        paginator = Paginator(news, 6)
+        page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+    return render(request, 'news.html', {'title': 'News','news_list': page_obj})

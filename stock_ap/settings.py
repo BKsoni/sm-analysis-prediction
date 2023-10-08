@@ -43,6 +43,8 @@ EXTERNAL_APPS = [
     "dashboard",
     "livetracker",
     "main",
+    "apis",
+    "rest_framework"
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
@@ -132,3 +134,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MODEL_PATH = os.path.join(BASE_DIR, 'main', 'models', 'model.h5')

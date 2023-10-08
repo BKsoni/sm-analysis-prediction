@@ -36,12 +36,17 @@
             </li>
             <li class="navHome"> <a href="/"> <i class="fa-solid fa-house"></i> Home</a></li>
             <li> <a href="#"> <i class="fa-solid fa-address-card"></i> About Us</a></li>
-            <li> <a href=""> <i class="fa-solid fa-phone"></i> Contact</a></li>
+            {% if request.user.is_authenticated %}
+            <li> <a href="/stockpicker"> <i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
             <li> <a href="/news"> <i class="fa-solid fa-newspaper"></i> News</a> </li>
-            <li> <a href="#"> <i class="fa-solid fa-newspaper"></i> Prediction</a> </li>
+            <li> <a href="/predict"> <i class="fa-solid fa-newspaper"></i> Prediction</a> </li>
             <li> <a href="/searchstock"> <i class="fa-solid fa-magnifying-glass"></i> Search</a> </li>
-            <li> <a href="#" id="login"> <i class="fa-solid fa-right-to-bracket"></i> Login</a> </li>
-            <li> <a href="#" id="register">Register</a> </li>
+            <li> <a href="/"> <i class="fa-solid fa-user"></i> Profile</a> </li>
+            <li> <a href="/logout" id="login"> <i class="fa-solid fa-right-to-bracket"></i> Logout</a> </li>
+            {% else %}
+            <li> <a href="/login" id="login"> <i class="fa-solid fa-right-to-bracket"></i> Login</a> </li>
+            <li> <a href="/register" id="register">Register</a> </li>
+            {% endif %}
         </ul>
     </div>
 

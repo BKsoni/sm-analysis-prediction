@@ -31,6 +31,10 @@ Search for Stock | View Stock Info
     <div id="search_form">
         <form id="stock_search_form" method="GET" action="{% url 'stock_info' %}">
             <input type="text" id="search_input" name="ticker" placeholder="Enter ticker symbol...">
+            <select name="duration" id="duration">
+                <option value="live">Live</option>
+                <option value="past">Past</option>
+            </select>
             <button type="submit" id="search_button">Search</button>
         </form>
     </div>
@@ -40,7 +44,9 @@ Search for Stock | View Stock Info
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>
+
 {% endif %}
+
     <div id="stock_chart">
         <!-- The chart will be displayed here -->
         {{ chart|safe }}
@@ -48,6 +54,5 @@ Search for Stock | View Stock Info
 {% endblock %}
 {% block js %}
 <script>
-    // You can add any JavaScript code here if needed
 </script>
 {% endblock %}

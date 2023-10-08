@@ -1,0 +1,32 @@
+{% extends 'basic.html' %} {% load static %} {% block title %} {{title}} {% endblock %} {% block css %} {% endblock %} {% block body %}
+
+<div>
+    <h1>Recommended Stocks</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Org</th>
+                <th>Symbol</th>
+                <th>Current Price</th>
+                <th>Day High</th>
+                <th>Day Low</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in df.iterrows %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ row.Org }}</td>
+                    <td>{{ row.Symbol }}</td>
+                    <td>{{ row.currentPrice }}</td>
+                    <td>{{ row.dayHigh }}</td>
+                    <td>{{ row.dayLow }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {{ news_feed }}
+</div>
+{% block js %}
+{% endblock %} {% endblock %}

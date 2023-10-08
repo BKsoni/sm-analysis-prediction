@@ -3,3 +3,10 @@ yfinance
 plotly
 yahoo_fin
 python-decouple
+spacy
+en_core_web_sm
+pandas
+djangorestframework
+numpy
+scikit-learn
+statsmodels

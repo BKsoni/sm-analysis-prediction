@@ -6,7 +6,7 @@ Search for Stock | View Stock Info
 {% block css %}
 {% endblock %}
 {% block body %}
-{% for news in news_list %}
+
 <div class="card-container">
     {% for news_item in news_list %}
     <div class="card">
@@ -27,7 +27,30 @@ Search for Stock | View Stock Info
     </div>
     {% endfor %}
 </div>
-{% endfor %}
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+    {% if news_list.has_previous %}
+      <li class="page-item">
+        <span class="page-link"><a href="?page={{ news_list.previous_page_number }}">Previous</a></span>
+      </li>
+    {% else %}
+    <li class="page-item disabled">
+        <span class="page-link"><a href="#">Previous</a></span>
+      </li>
+    {% endif %}
+    <li class="page-item"> Page {{ news_list.number }} of {{ news_list.paginator.num_pages }}.</li>
+    {% if news_list.has_next %}
+      <li class="page-item">
+        <span class="page-link"><a href="?page={{ news_list.next_page_number }}">Next</a></span>
+      </li>
+    {% else %}
+    <li class="page-item disabled">
+        <span class="page-link"><a href="#"></a>Next</span>
+      </li>
+    {% endif %}
+    </ul>
+  </nav>
 {% block js %}
 <script>
     // You can add any JavaScript code here if needed
