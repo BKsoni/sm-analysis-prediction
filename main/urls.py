@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import index, about,autocomplete, predict, login_page, register_page, logout_page, news_sentiment, linear_forecast
+from .views import index, about,autocomplete, predict, login_page, register_page, logout_page, news_sentiment, linear_forecast, lstm_forecast
 
 urlpatterns = [
     path("", index, name="index"),
@@ -8,6 +8,7 @@ urlpatterns = [
     path('predict/', predict, name='predict'),
     path('predict/news-sentiment/', news_sentiment, name='news_sentiment'),
     path('predict/linear-forecast/<str:ticker_symbol>/', linear_forecast, name='linear-forecast'),
+    path('predict/lstm-forecast/<str:ticker_symbol>/', lstm_forecast, name='lstm-forecast'),
     path("login/", login_page),
     path("register/", register_page),
     path("logout/", logout_page),

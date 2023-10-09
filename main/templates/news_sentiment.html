@@ -1,9 +1,46 @@
-{% extends 'basic.html' %} {% load static %} {% block title %} {{title}} {% endblock %} {% block css %} {% endblock %} {% block body %}
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block css %}
+<style>
+    .news-feed {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-<div>
-    <h1>Recommended Stocks</h1>
-    <table border="1">
-        <thead>
+    .news-item {
+        width: calc(33.33% - 10px); /* Adjust the width as needed */
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .news-title {
+        font-weight: bold;
+    }
+
+    .news-content {
+        margin-top: 10px;
+    }
+
+    .read-more {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h2>Trending Stocks</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
             <tr>
                 <th>Sr. No.</th>
                 <th>Org</th>
@@ -26,7 +63,18 @@
             {% endfor %}
         </tbody>
     </table>
-    {{ news_feed }}
+    <h2>News Feed</h2>
+    <div class="news-feed">
+        {% for news_item in news_feed %}
+        <div class="news-item">
+            <h5 class="news-title">{{ news_item.title }}</h5>
+            <p class="news-content">{{ news_item.content }}</p>
+            <a href="{{ news_item.link }}" class="read-more">Read More</a>
+        </div>
+        {% endfor %}
+    </div>
+
 </div>
+{% endblock %}
 {% block js %}
-{% endblock %} {% endblock %}
+{% endblock %}

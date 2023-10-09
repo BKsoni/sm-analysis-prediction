@@ -11,10 +11,12 @@ def extract_text_from_rss():
     Extracts text from RSS feed
     """
     #https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms
+    #https://www.moneycontrol.com/rss/buzzingstocks.xml
     r = requests.get("https://www.moneycontrol.com/rss/buzzingstocks.xml")
     soup = BeautifulSoup(r.content,features='xml')
     headlines = soup.findAll('title')
     return headlines
+
 def get_news_feed():
     """
     Returns news feed

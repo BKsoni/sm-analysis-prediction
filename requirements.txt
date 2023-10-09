@@ -10,3 +10,6 @@ djangorestframework
 numpy
 scikit-learn
 statsmodels
+pydantic-core
+typing-extensions
+tensorflow

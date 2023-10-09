@@ -16,3 +16,11 @@ class LinearRegressionModel(models.Model):
     seasonal_forecast = models.JSONField(null=True, blank=True)
     def __str__(self):
         return self.ticker.ticker
+
+class LSTMModel(models.Model):
+    ticker = models.ForeignKey(Tickers, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    dates = models.JSONField(null=True, blank=True)
+    prices = models.JSONField(null=True, blank=True)
+    def __str__(self):
+        return self.ticker.ticker

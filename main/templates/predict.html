@@ -1,7 +1,9 @@
 {% extends 'basic.html' %}
 {% load static %}
 {% block title %}
-RELIANCE.NS Prediction
+Stock Price Forecast
+{% endblock %}
+{% block meta %}
 {% endblock %}
 {% block css %}
 {% endblock %}
@@ -13,28 +15,28 @@ RELIANCE.NS Prediction
         <a href="{% url 'news_sentiment' %}" class="card">
             <img src="{% static 'images/news.avif' %}" alt="News" class="card-image">
             <div class="card-content">
-                <h2 class="card-title">News Sentiment</h2>
-                <p class="card-summary">Using NLP</p>
+                <h2 class="card-title">News Sentiment using NLP</h2>
+                <p class="card-summary">Keywords: NLP</p>
             </div>
         </a>
 
         <!-- Card 2 -->
-        <div class="card">
+        <a href="/predict/linear-forecast/dabur.ns/" class="card">
+            <img src="{% static 'images/stock_linear.jpg' %}" alt="Stock Market" class="card-image">
+            <div class="card-content">
+                <h2 class="card-title">Next 90 days Prediction using Linear Regression model</h2>
+                <p class="card-summary">Keywords: Linear Regression, Yfinance</p>
+            </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="/predict/lstm-forecast/dabur.ns/" class="card">
             <img src="{% static 'images/stock_lstm.jpg' %}" alt="Stock Market" class="card-image">
             <div class="card-content">
                 <h2 class="card-title">Next 30 days Prediction using LSTM model</h2>
-                <p class="card-summary">Using LSTM, Yfinance</p>
+                <p class="card-summary">Keywords: LSTM, Yfinance</p>
             </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-            <img src="{% static 'images/stock_lstm.jpg' %}" alt="Stock Market" class="card-image">
-            <div class="card-content">
-                <h2 class="card-title">Next 30 days Prediction using XGBoost model</h2>
-                <p class="card-summary">Using XGBoost, Yfinance</p>
-            </div>
-        </div>
+        </a>
 
     </div>
 </div>

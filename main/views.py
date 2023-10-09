@@ -12,7 +12,7 @@ from .utils.nlp import get_news_sentiment, get_news_feed
 from .utils.Dates import calculate_extra_date
 from django.core.cache import cache
 import plotly.graph_objs as go
-
+from datetime import datetime
 
 API_KEY = config("ALPHA_VANTAGE_API_KEY")
 
@@ -112,12 +112,7 @@ def news_sentiment(request):
     # Render the HTML template with the data
     return render(request, 'news_sentiment.html', {'df': output_df, 'news_feed': news_feed})
 
-import requests
-
-import requests
-import plotly.graph_objs as go
-from django.shortcuts import render
-
+@login_required(login_url='/login/')
 def linear_forecast(request, ticker_symbol):
     # Assuming you are working locally with HTTP
     url = f'http://localhost:8000/api/linear-forecast/{ticker_symbol}'
@@ -133,10 +128,26 @@ def linear_forecast(request, ticker_symbol):
             extra_dates = [calculate_extra_date(last_date, num_days=i) for i in range(1, num_extra_dates + 1)]
             data_json['dates'].extend(extra_dates)
 
-        seasonal_line = go.Scatter(x=data_json['dates'], y=data_json['seasonal_forecast'], mode='lines+markers', name='Seasonal Forecast', line=dict(color='blue'))
-        trend_line = go.Scatter(x=data_json['dates'], y=data_json['trend_forecast'], mode='lines+markers', name='Trend Forecast', line=dict(color='red'))
+        # Get the current date in the same format as your date data
+        current_date = datetime.now().strftime('%Y-%m-%d')
 
-        chart_data = [seasonal_line, trend_line]
+        seasonal_forecast = data_json['seasonal_forecast']
+        dates = data_json['dates']
+        trend_forecast = data_json['trend_forecast']
+
+        seasonal_line = go.Scatter(x=dates, y=seasonal_forecast, mode='lines+markers', name='Seasonal Forecast', line=dict(color='blue'))
+        trend_line = go.Scatter(x=dates, y=trend_forecast, mode='lines+markers', name='Trend Forecast', line=dict(color='red'))
+
+        # Find the index of the current date
+        current_date_index = dates.index(current_date)
+
+        # Create separate traces for dates before and after the current date
+        seasonal_line_before = go.Scatter(x=dates[:current_date_index], y=seasonal_forecast[:current_date_index],
+                                               mode='lines+markers', line=dict(color='blue'), name='Before Current Date')
+        seasonal_line_after = go.Scatter(x=dates[current_date_index:], y=seasonal_forecast[current_date_index:],
+                                              mode='lines+markers', line=dict(color='green'), name='After Current Date')
+
+        chart_data = [seasonal_line_before, trend_line, seasonal_line_after]
 
         layout = go.Layout(title=f'Seasonal Forecast for {data_json["ticker"]} ({data_json["ticker_name"]})', xaxis_title='Time', yaxis_title='Price')
 
@@ -148,4 +159,41 @@ def linear_forecast(request, ticker_symbol):
         # Handle the case when the request was not successful (e.g., display an error message)
         return render(request, 'error.html', {'message': 'Failed to retrieve data'})
 
+@login_required(login_url='/login/')
+def lstm_forecast(request, ticker_symbol):
+    # Assuming you are working locally with HTTP
+    url = f'http://localhost:8000/api/lstm-forecast/{ticker_symbol}'
+    data = requests.get(url)
 
+    # Check if the request was successful
+    if data.status_code == 200:
+        # You may want to parse the data if it's in a specific format (e.g., JSON)
+        data_json = data.json()
+
+        current_date = datetime.now().strftime('%Y-%m-%d')
+
+        prices = data_json['prices']
+        dates = data_json['dates']
+
+        prices_line = go.Scatter(x=dates, y=prices, mode='lines+markers', name='Price', line=dict(color='blue'))
+
+        # Find the index of the current date
+        current_date_index = dates.index(current_date)
+
+        # Create separate traces for dates before and after the current date
+        prices_line_before = go.Scatter(x=dates[:current_date_index], y=prices[:current_date_index],
+                                               mode='lines+markers', line=dict(color='blue'), name='Before Current Date')
+        prices_line_after = go.Scatter(x=dates[current_date_index:], y=prices[current_date_index:],
+                                              mode='lines+markers', line=dict(color='green'), name='After Current Date')
+
+        chart_data = [prices_line_before, prices_line_after]
+
+        layout = go.Layout(title=f'Price Forecast for {data_json["ticker"]} ({data_json["ticker_name"]})', xaxis_title='Time', yaxis_title='Price')
+
+        # Render the chart_data directly to HTML using plotly.io.to_html
+        chart_html = go.Figure(data=chart_data, layout=layout).to_html()
+
+        return render(request, 'lstm.html', {'data': data_json, 'chart_html': chart_html})
+    else:
+        # Handle the case when the request
+        return render(request, 'error.html', {'message': 'Failed to retrieve data'})
