@@ -10,7 +10,7 @@ from .yFinanaceData import getTickerData
 from ..models import Tickers, LSTMModel
 
 TIME_STEP = 100
-EPOCHS = 10
+EPOCHS = 100
 FIELD = 'Close'
 
 def replace_nan_with_nearest(arr):
