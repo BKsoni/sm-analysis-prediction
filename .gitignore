@@ -1,2 +1,9 @@
 __pycache__/
 .env
+*.pyc
+**/migrations/
+myproject/settings_local.py
+*.DS_Store
+Thumbs.db
+venv/
+*.sqlite3

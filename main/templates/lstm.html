@@ -1,7 +1,41 @@
-{% extends 'basic.html' %} {% load static %} {% block title %} {{title}} {% endblock %} {% block css %} {% endblock %} {% block body %}
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block css %}
+    <!-- Add any additional CSS here -->
+{% endblock %}
+{% block body %}
 
-    {{ chart_html|safe }}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <form id="tickerSelectForm">
+                <select class="form-select mb-3" id="tickerSelect" onchange="handleChange(this)">
+                    <option value="">Select Ticker</option>
+                    {% for ticker in tickers %}
+                        <option value="{{ ticker.ticker }}">{{ ticker.ticker }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+    </div>
+    <div id="chartContainer">
+        {{ chart_html|safe }}
+    </div>
+</div>
+
+<script>
+    function handleChange(selectObject) {
+        var selectedTicker = selectObject.value;
+        if (selectedTicker) {
+            window.location.href = "/predict/lstm-forecast/" + selectedTicker + "/";
+        }
+    }
+</script>
 
 {% endblock %}
 {% block js %}
+    <!-- Add any additional JS here -->
 {% endblock %}

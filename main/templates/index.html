@@ -41,27 +41,27 @@ Stock Analysis and Prediction
         <div class="boxes">
             <div class="box">
                 <h2>NIFTY 50</h2>
-                <h2 id="prize1">17799.8</h2>
-                <p>175.4</p>
-                <p>1.0%</p>
+                <h2 id="prize1">{{ nifty_50.latest_price|floatformat:2 }}</h2>
+                <p>{{ nifty_50.change|floatformat:2 }}</p>
+                <p>{{ nifty_50.change_percent|floatformat:2 }}%</p>
             </div>
             <div class="box">
                 <h2>NIFTY BANK</h2>
-                <h2 id="prize2">17799.8</h2>
-                <p>175.4</p>
-                <p>1.0%</p>
+                <h2 id="prize2">{{ nifty_bank.latest_price|floatformat:2 }}</h2>
+                <p>{{ nifty_bank.change|floatformat:2 }}</p>
+                <p>{{ nifty_bank.change_percent|floatformat:2 }}%</p>
             </div>
             <div class="box">
                 <h2>DowJones</h2>
-                <h2 id="prize3">17799.8</h2>
-                <p>175.4</p>
-                <p>1.0%</p>
+                <h2 id="prize3">{{ dowjones.latest_price|floatformat:2 }}</h2>
+                <p>{{ dowjones.change|floatformat:2 }}</p>
+                <p>{{ dowjones.change_percent|floatformat:2 }}%</p>
             </div>
             <div class="box">
                 <h2>Nasdaq</h2>
-                <h2 id="prize4">17799.8</h2>
-                <p>175.4</p>
-                <p>1.0%</p>
+                <h2 id="prize4">{{ nasdaq.latest_price|floatformat:2 }}</h2>
+                <p>{{ nasdaq.change|floatformat:2 }}</p>
+                <p>{{ nasdaq.change_percent|floatformat:2 }}%</p>
             </div>
         </div>
         <div class="twoBoxes">
@@ -114,17 +114,9 @@ Stock Analysis and Prediction
                 </table>
             </div>
         </div>
-        <div class="twoImages">
-            <div class="image">
-                <img src="{% static 'images/tips.png' %}" alt=""  style="height: 300px; width: 700px;">
-                <h1>Learn About Stock</h1>
-                <input type="button" value="Learn" id="button" class="btn btn-dark">
-            </div>
-            <div class="image">
-                <img src="{% static 'images/portfolio.png' %}" alt="" style="height: 300px; width: 700px;">
-                <h1>Add Stock</h1>
-                <p> <em>Click below to make your Watchlist</em> </p>
-                <input type="button" value="Add Stock" id="button" class="btn btn-dark">
+        <div class="container-fluid bg-dark text-light py-3 mt-4">
+            <div class="text-center">
+                <p>&copy; 2023 StockMarket. All rights reserved.</p>
             </div>
         </div>
 

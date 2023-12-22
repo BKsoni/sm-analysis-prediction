@@ -100,22 +100,30 @@ def stock_info(request):
 
 
     chart = go.Figure(data=chart_data, layout=layout)
-    if duration=="past":
-        chart.update_xaxes(rangeslider_visible=True,
-                        rangeselector=dict(
-                                buttons=list([
-                                    #dict(count=10, label="1d", step="day", stepmode="backward",),
-                                    dict(count=5, label="5d", step="day", stepmode="backward"),
-                                    dict(count=1, label="1m", step="month", stepmode="backward"),
-                                    dict(count=3, label="3m", step="month", stepmode="backward"),
-                                    #dict(count=6, label="6m", step="month", stepmode="backward"),
-                                    dict(count=1, label="1y", step="year", stepmode="backward"),
-                                    #dict(count=2, label="2y", step="year", stepmode="backward"),
-                                    dict(count=5, label="5y", step="year", stepmode="backward"),
-                                    dict(step="all")
-                                ])
+    if duration == "past":
+        chart.update_xaxes(
+            rangeslider_visible=True,
+            rangeselector=dict(
+                buttons=list([
+                    dict(count=5, label="5d", step="day", stepmode="backward"),
+                    dict(count=1, label="1m", step="month", stepmode="backward"),
+                    dict(count=3, label="3m", step="month", stepmode="backward"),
+                    dict(count=1, label="1y", step="year", stepmode="backward"),
+                    dict(count=5, label="5y", step="year", stepmode="backward"),
+                    dict(step="all")
+                ])
+            )
+        )
+        chart.update_layout(xaxis_rangeslider_visible=True)
 
-                        ))
+        if request.GET.get('duration') == "5d":
+            # Update the y-axis range based on 5 days data
+            min_price = min(closing_prices[-5:])
+            max_price = max(closing_prices[-5:])
+            chart.update_yaxes(range=[min_price, max_price])
+
+        chart.update_yaxes(fixedrange=True)
+
     return render(request, 'stock_info.html', {'chart': chart.to_html()})
 
 @login_required(login_url='/login/')

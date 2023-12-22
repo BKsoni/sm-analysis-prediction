@@ -4,55 +4,40 @@
 Search for Stock | View Stock Info
 {% endblock %}
 {% block css %}
-<style>
-    /* Add some basic styling */
-    #search_form {
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    #search_input {
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    #search_button {
-        padding: 8px 16px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-</style>
+<!-- No custom CSS needed, using Bootstrap classes -->
 {% endblock %}
 {% block body %}
-    <div id="search_form">
-        <form id="stock_search_form" method="GET" action="{% url 'stock_info' %}">
-            <input type="text" id="search_input" name="ticker" placeholder="Enter ticker symbol...">
-            <select name="duration" id="duration">
-                <option value="live">Live</option>
-                <option value="past">Past</option>
-            </select>
-            <button type="submit" id="search_button">Search</button>
-        </form>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="d-flex mb-3" id="stock_search_form" method="GET" action="{% url 'stock_info' %}">
+                <input type="text" class="form-control me-2" id="search_input" name="ticker" placeholder="Enter ticker symbol...">
+                <select class="form-select me-2" name="duration" id="duration">
+                    <option value="live">Live</option>
+                    <option value="past">Past</option>
+                </select>
+                <button type="submit" class="btn btn-success" id="search_button">Search</button>
+            </form>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
     </div>
-    {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-
-{% endif %}
-
-    <div id="stock_chart">
-        <!-- The chart will be displayed here -->
-        {{ chart|safe }}
+</div>
+    <div class="row justify-content-center">
+        <div>
+            <div id="stock_chart">
+                <!-- The chart will be displayed here -->
+                {{ chart|safe }}
+            </div>
+        </div>
     </div>
+
 {% endblock %}
 {% block js %}
-<script>
-</script>
+<!-- No additional JavaScript needed -->
 {% endblock %}

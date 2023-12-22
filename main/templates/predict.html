@@ -12,7 +12,7 @@ Stock Price Forecast
     <div class="card-container">
         <!-- Card 1 -->
 
-        <a href="{% url 'news_sentiment' %}" class="card">
+        <a href="{% url 'news_sentiment' %}" class="card text-decoration-none">
             <img src="{% static 'images/news.avif' %}" alt="News" class="card-image">
             <div class="card-content">
                 <h2 class="card-title">News Sentiment using NLP</h2>
@@ -21,7 +21,7 @@ Stock Price Forecast
         </a>
 
         <!-- Card 2 -->
-        <a href="/predict/linear-forecast/dabur.ns/" class="card">
+        <a href="/predict/linear-forecast/dabur.ns/" class="card text-decoration-none">
             <img src="{% static 'images/stock_linear.jpg' %}" alt="Stock Market" class="card-image">
             <div class="card-content">
                 <h2 class="card-title">Next 90 days Prediction using Linear Regression model</h2>
@@ -30,7 +30,7 @@ Stock Price Forecast
         </a>
 
         <!-- Card 3 -->
-        <a href="/predict/lstm-forecast/dabur.ns/" class="card">
+        <a href="/predict/lstm-forecast/dabur.ns/" class="card text-decoration-none">
             <img src="{% static 'images/stock_lstm.jpg' %}" alt="Stock Market" class="card-image">
             <div class="card-content">
                 <h2 class="card-title">Next 30 days Prediction using LSTM model</h2>

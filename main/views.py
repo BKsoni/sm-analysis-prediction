@@ -13,6 +13,8 @@ from .utils.Dates import calculate_extra_date
 from django.core.cache import cache
 import plotly.graph_objs as go
 from datetime import datetime
+from apis.models import Tickers
+from .utils.StockData import get_stock_data
 
 API_KEY = config("ALPHA_VANTAGE_API_KEY")
 
@@ -26,7 +28,16 @@ def index(request):
     if data.get('top_gainers',0) and data.get('top_losers',0):
         top_gainers = [ data['top_gainers'][i] for i in range(10) ]
         top_losers = [ data['top_losers'][i] for i in range(10) ]
-    return render(request, 'index.html', {'title': 'Home', 'top_gainers': top_gainers, 'top_losers': top_losers})
+
+    return render(request, 'index.html', {
+        'title': 'Home',
+        'top_gainers': top_gainers,
+        'top_losers': top_losers,
+        'nifty_50': get_stock_data('^NSEI'),
+        'nifty_bank': get_stock_data('^NSEBANK') ,
+        'dowjones': get_stock_data('^DJI'),
+        'nasdaq': get_stock_data('^IXIC'),
+    })
 
 def about(request):
     return render(request, 'about.html')
@@ -117,7 +128,7 @@ def linear_forecast(request, ticker_symbol):
     # Assuming you are working locally with HTTP
     url = f'http://localhost:8000/api/linear-forecast/{ticker_symbol}'
     data = requests.get(url)
-
+    tickers = Tickers.objects.all()
     # Check if the request was successful
     if data.status_code == 200:
         # You may want to parse the data if it's in a specific format (e.g., JSON)
@@ -154,7 +165,7 @@ def linear_forecast(request, ticker_symbol):
         # Render the chart_data directly to HTML using plotly.io.to_html
         chart_html = go.Figure(data=chart_data, layout=layout).to_html()
 
-        return render(request, 'linear_regression.html', {'data': data_json, 'chart_html': chart_html})
+        return render(request, 'linear_regression.html', {'data': data_json, 'chart_html': chart_html, 'tickers': tickers})
     else:
         # Handle the case when the request was not successful (e.g., display an error message)
         return render(request, 'error.html', {'message': 'Failed to retrieve data'})
@@ -164,6 +175,7 @@ def lstm_forecast(request, ticker_symbol):
     # Assuming you are working locally with HTTP
     url = f'http://localhost:8000/api/lstm-forecast/{ticker_symbol}'
     data = requests.get(url)
+    tickers = Tickers.objects.all()
 
     # Check if the request was successful
     if data.status_code == 200:
@@ -193,7 +205,7 @@ def lstm_forecast(request, ticker_symbol):
         # Render the chart_data directly to HTML using plotly.io.to_html
         chart_html = go.Figure(data=chart_data, layout=layout).to_html()
 
-        return render(request, 'lstm.html', {'data': data_json, 'chart_html': chart_html})
+        return render(request, 'lstm.html', {'data': data_json, 'chart_html': chart_html, 'tickers': tickers})
     else:
         # Handle the case when the request
         return render(request, 'error.html', {'message': 'Failed to retrieve data'})
